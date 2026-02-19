@@ -1,31 +1,9 @@
-# Python Virtual Environment
 .venv/
 venv/
 env/
-
-# Python Bytecode
 __pycache__/
-*.py[cod]
-*$py.class
-
-# Testing
-html-report/
 .pytest_cache/
-.coverage
-coverage.xml
-*.cover
+html-report/
 *.log
-report.html
-
-# IDE/Editor
 .vscode/
 .idea/
-*.swp
-*.swo
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Docker
-docker-compose.override.yml
