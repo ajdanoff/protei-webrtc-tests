@@ -1,0 +1,36 @@
+<!-- mock-frontend/index.html (без кириллицы) -->
+<!DOCTYPE html>
+<html>
+<head><title>Protei Contact Center Mock</title>
+<style>
+.call-notification { background: #ffeb3b; padding: 15px; border-radius: 5px; }
+.webrtc-connected { background: #4caf50; color: white; padding: 15px; border-radius: 5px; }
+button { padding: 8px 16px; background: #2196f3; color: white; border: none; border-radius: 4px; cursor: pointer; margin: 5px; }
+</style>
+</head>
+<body>
+    <h1>Protei Contact Center (QA Demo)</h1>
+
+    <div id="incoming-call" class="call-notification" data-call-id="client-123">
+        Incoming WebRTC call: <strong>client-123</strong>
+        <button data-action="accept" onclick="simulateAccept('client-123')">Accept</button>
+        <button onclick="simulateReject()">Reject</button>
+    </div>
+
+    <div id="video-stream" class="webrtc-connected" style="display:none;"
+         data-call-id="client-123" data-streaming="true">
+        WebRTC Active (client-123) | Duration: <span class="duration">0</span>s
+    </div>
+
+    <script>
+    function simulateAccept(callId) {
+        document.getElementById('incoming-call').style.display = 'none';
+        document.getElementById('video-stream').style.display = 'block';
+        document.querySelector('.duration').innerText = '15';
+    }
+    function simulateReject() {
+        document.getElementById('incoming-call').innerHTML += ' <span style="color:red;">REJECTED</span>';
+    }
+    </script>
+</body>
+</html>

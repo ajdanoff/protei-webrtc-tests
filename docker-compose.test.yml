@@ -1,0 +1,22 @@
+services:
+  wiremock:
+    image: wiremock/wiremock:3.9.0  # ✅ Существующий тег
+    ports:
+      - "8081:8080"
+    volumes:
+      - ./wiremock/mappings:/home/wiremock/mappings:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/__admin/mappings"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  contact-center:
+    image: nginx:alpine
+    ports:
+      - "3000:80"
+    volumes:
+      - ./mock-frontend:/usr/share/nginx/html:ro
+    depends_on:
+      wiremock:
+        condition: service_healthy

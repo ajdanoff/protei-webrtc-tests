@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "POST",
+    "urlPath": "/sip/invite"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": "{\"status\":\"RINGING\",\"call_id\":\"123\",\"sdp\":\"v=0\\r\\no=- 123456 2 IN IP4 127.0.0.1\"}"
+  }
+}
