@@ -1,0 +1,26 @@
+name: Protei MCPTT Tests CI
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Start Docker services
+      run: |
+        docker compose up -d wiremock contact-center
+
+    - name: Install Python deps
+      run: pip install -r requirements.txt
+
+    - name: Run Playwright tests
+      run: |
+        playwright install chromium
+        pytest tests/ --html=report.html -v
+
+    - name: Upload test report
+      uses: actions/upload-artifact@v4
+      with:
+        name: pytest-report
+        path: report.html
