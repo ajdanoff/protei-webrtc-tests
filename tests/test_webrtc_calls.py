@@ -10,7 +10,7 @@ from playwright.async_api import async_playwright
 async def test_incoming_call_notification():
     """✅ Incoming call notification → Accept button"""
     async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=False, slow_mo=500)
+        browser = await p.chromium.launch(headless=True, slow_mo=500)
         page = await browser.new_page()
         await page.goto("http://localhost:3000")
 
@@ -35,7 +35,7 @@ async def test_incoming_call_notification():
 async def test_accept_call_workflow():
     """✅ Click Accept → video stream appears"""
     async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=False, slow_mo=1000)
+        browser = await p.chromium.launch(headless=True, slow_mo=1000)
         page = await browser.new_page()
         await page.goto("http://localhost:3000")
 

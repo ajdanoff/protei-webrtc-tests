@@ -17,7 +17,7 @@ async def playwright_instance():
 
 @pytest_asyncio.fixture(scope="function")
 async def browser(playwright_instance):
-    browser = await playwright_instance.chromium.launch(headless=False)
+    browser = await playwright_instance.chromium.launch(headless=True)
     page = await browser.new_page()
     await page.goto("http://localhost:3000")
     yield page
